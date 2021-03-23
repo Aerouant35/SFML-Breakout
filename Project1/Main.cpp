@@ -19,33 +19,15 @@ int main()
     sf::RenderWindow window(sf::VideoMode(gameManager.fWidth, gameManager.fHeight), "SFML window");
 
     #pragma region CreateElements
-    /*
-        // Load a sprite to display
-        sf::Texture texture;
-        if (!texture.loadFromFile("cute_image.jpg"))
-            return EXIT_FAILURE;
-        sf::Sprite sprite(texture);
-        // Load a music to play
-        sf::Music music;
-        if (!music.openFromFile("nice_music.ogg"))
-            return EXIT_FAILURE;
-        // Play the music
-        music.play();
-        // Create a graphical text to display
-        sf::Font font;
-        if (!font.loadFromFile("arial.ttf"))
-            return EXIT_FAILURE;
-        sf::Text text("Hello SFML", font, 50);
-    */
-
+   
     //define radius
     float fRadius = 30;
     //create circle
     sf::CircleShape circle(fRadius);
     // change la couleur de la forme pour du vert
     circle.setFillColor(sf::Color(100, 250, 50));
-    //set pos
-    circle.setPosition(gameManager.fWidth/2- fRadius, gameManager.fHeight - fRadius*2);
+    //set origin and position for circle
+    gameManager.SetPosition(0.5f, 1, 0.5f, 1, circle);
 
     #pragma endregion CreateElement
 
