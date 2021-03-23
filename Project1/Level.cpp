@@ -5,20 +5,19 @@ Level::Level()
 	int Span = 10;
 
 	//Create Bricks on the Map
-	for (int i = 0; i < nbCol; i++)
+	for (int u = 0; u < nbRaw; u++)
 	{
-		Brick *CurrentBrick = new Brick;
+		for (int i = 0; i < nbCol; i++)
+		{
+			Brick* CurrentBrick = new Brick;
 
-		// change sa taille en 100x100
+			//set pos
+			CurrentBrick->Shape->setPosition(CurrentBrick->fWidth * i + Span * (i+1), CurrentBrick->fHeight * u + Span * (u+1) );
 
-		CurrentBrick->Shape->setSize(sf::Vector2f(100, 100));
-		// change la couleur de la forme pour du vert
-		CurrentBrick->Shape->setFillColor(CurrentBrick->color);
-		//set pos
-		CurrentBrick->Shape->setPosition(CurrentBrick->fWidth * i + Span, Span); //pb ici ?
-
-		TabBrick.push_back(CurrentBrick);
+			TabBrick.push_back(CurrentBrick);
+		}
 	}
+
 
 }
 

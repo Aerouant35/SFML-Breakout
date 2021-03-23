@@ -14,7 +14,7 @@ class Level
 	public : 
 
 		int nbRaw = 3;
-		int nbCol = 5;
+		int nbCol = 9;
 
 		std::vector<Brick*> TabBrick;
 };

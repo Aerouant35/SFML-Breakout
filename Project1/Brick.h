@@ -16,8 +16,8 @@ private:
 public:
 	int nbLife = 3;
 
-	float fWidth = 50;
-	float fHeight = 20;
+	float fWidth = 100;
+	float fHeight = 35;
 
 	// définit un rectangle
 	sf::RectangleShape *Shape;
