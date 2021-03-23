@@ -23,3 +23,13 @@ void GameManager::SetPosition(float fAnchorX, float fAnchorY, float fRatioX, flo
     oShape.setOrigin(fOriginX, fOriginY);
     oShape.setPosition(fPosX, fPosY);
 }
+
+sf::Vector2f GameManager::Normalize(const sf::Vector2f& vectorBase)
+{
+    float length = sqrt((vectorBase.x * vectorBase.x) + (vectorBase.y * vectorBase.y));
+
+    if (length != 0)
+        return sf::Vector2f(vectorBase.x / length, vectorBase.y / length);
+    else
+        return vectorBase;
+}

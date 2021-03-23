@@ -1,8 +1,9 @@
-#include <SFML/Audio.hpp>
+#include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 
 #include "GameManager.h"
 #include "Level.h"
+#include "Cannon.h"
 
 #include <iostream>
 
@@ -19,22 +20,20 @@ int main()
     sf::RenderWindow window(sf::VideoMode(gameManager.fWidth, gameManager.fHeight), "SFML window");
 
     #pragma region CreateElements
-   
-    //define radius
-    float fRadius = 30;
-    //create circle
-    sf::CircleShape circle(fRadius);
-    // change la couleur de la forme pour du vert
-    circle.setFillColor(sf::Color(100, 250, 50));
-    //set origin and position for circle
-    gameManager.SetPosition(0.5f, 1, 0.5f, 1, circle);
+    sf::Clock clock;
+    sf::Time time;
 
+    Ball *ball = new Ball();
+    Cannon cannon;
+
+    sf::Vector2f ballNorm;
     #pragma endregion CreateElement
 
 
     // Start the game loop
     while (window.isOpen())
     {
+        time = clock.restart();
         // Process events
         sf::Event event;
         while (window.pollEvent(event))
@@ -42,18 +41,23 @@ int main()
             // Close window: exit
             if (event.type == sf::Event::Closed)
                 window.close();
+
+            if (event.type == sf::Event::MouseButtonPressed) 
+            {
+                if (event.mouseButton.button == sf::Mouse::Left)
+                {
+                    ballNorm = cannon.BallMove(*ball, (sf::Vector2f)sf::Mouse::getPosition(window));
+                }
+            }
         }
+        
+        ball->GetShape().move(ballNorm * ball->GetVelocity() * time.asSeconds());
+        
         // Clear screen
         window.clear();
-
+        
         #pragma region DisplayElement 
-        /*
-            // Draw the sprite
-            window.draw(sprite);
-            // Draw the string
-            window.draw(text);
-        */
-        window.draw(circle);
+        window.draw(ball->GetShape());
 
         //Draw Bricks from Level
         for (int i=0; i < level.TabBrick.size(); i++)
