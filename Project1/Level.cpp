@@ -2,6 +2,24 @@
 
 Level::Level()
 {
+	//background
+	texture = new sf::Texture;
+	Background = new sf::Sprite;
+	
+
+	texture->setSmooth(true);
+	texture->setRepeated(true);
+
+	//if(!texture->loadFromFile("Test.png"))
+	if (!texture->loadFromFile("../Ressources/Textures/BackGround.png"))
+	{
+		// error...
+	}
+	Background->setTexture(*texture);
+	Background->scale(1, 1);
+	Background->setPosition(0, 0);
+
+
 	int Span = 10;
 
 	//Create Bricks on the Map

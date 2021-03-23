@@ -14,12 +14,10 @@ int main()
     // Create Level
     Level level;
 
-
     // Create the main window
-    sf::RenderWindow window(sf::VideoMode(gameManager.fWidth, gameManager.fHeight), "SFML window");
+    sf::RenderWindow window(sf::VideoMode(gameManager.fWidth, gameManager.fHeight), "SFML - BreakOut");
 
     #pragma region CreateElements
-   
     //define radius
     float fRadius = 30;
     //create circle
@@ -53,6 +51,11 @@ int main()
             // Draw the string
             window.draw(text);
         */
+
+        //draw background
+        window.draw(*level.Background);
+
+        //draw ball
         window.draw(circle);
 
         //Draw Bricks from Level
