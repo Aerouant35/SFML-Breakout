@@ -25,5 +25,8 @@ public:
 	sf::Color color = sf::Color::Red;
 	
 
+	sf::Texture* texture;
+	sf::Sprite* Sprite;
+
 };
 
