@@ -1,5 +1,13 @@
 #include "Cannon.h"
 
+Cannon::Cannon()
+{
+}
+
+Cannon::~Cannon()
+{
+}
+
 sf::Vector2f Cannon::BallMove(Ball& ball, sf::Vector2f mousePos)
 {
 	GameManager tempManager;

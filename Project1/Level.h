@@ -17,5 +17,8 @@ class Level
 		int nbCol = 9;
 
 		std::vector<Brick*> TabBrick;
+
+		sf::Texture* texture;
+		sf::Sprite* Background;
 };
 

@@ -15,9 +15,8 @@ int main()
     // Create Level
     Level level;
 
-
     // Create the main window
-    sf::RenderWindow window(sf::VideoMode(gameManager.fWidth, gameManager.fHeight), "SFML window");
+    sf::RenderWindow window(sf::VideoMode(gameManager.fWidth, gameManager.fHeight), "SFML - BreakOut");
 
     #pragma region CreateElements
     sf::Clock clock;
@@ -57,7 +56,13 @@ int main()
         window.clear();
         
         #pragma region DisplayElement 
-        window.draw(ball->GetShape());
+        /*
+            // Draw the sprite
+            window.draw(sprite);
+            // Draw the string
+            window.draw(text);
+        */
+        window.draw(circle);
 
         //Draw Bricks from Level
         for (int i=0; i < level.TabBrick.size(); i++)
