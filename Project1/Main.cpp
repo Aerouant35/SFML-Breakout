@@ -25,14 +25,15 @@ int main()
     Ball *ball = new Ball();
     Cannon cannon;
 
-    sf::Vector2f ballNorm;
+    sf::Vector2f ballDir;
     #pragma endregion CreateElement
 
 
     // Start the game loop
     while (window.isOpen())
     {
-        time = clock.restart();
+        float fDeltaTime = clock.getElapsedTime().asSeconds();
+        clock.restart();
         // Process events
         sf::Event event;
         while (window.pollEvent(event))
@@ -45,12 +46,12 @@ int main()
             {
                 if (event.mouseButton.button == sf::Mouse::Left)
                 {
-                    ballNorm = cannon.BallMove(*ball, (sf::Vector2f)sf::Mouse::getPosition(window));
+                    ballDir = cannon.BallDir(*ball, (sf::Vector2f)sf::Mouse::getPosition(window));
                 }
             }
         }
         
-        ball->GetShape().move(ballNorm * ball->GetVelocity() * time.asSeconds());
+        ball->GetShape().move(ballDir * ball->GetVelocity() * fDeltaTime);
         
         // Clear screen
         window.clear();
@@ -62,7 +63,12 @@ int main()
             // Draw the string
             window.draw(text);
         */
-        window.draw(circle);
+
+        //draw background
+        window.draw(*level.Background);
+
+        //draw ball
+        window.draw(ball->GetShape());
 
         //Draw Bricks from Level
         for (int i=0; i < level.TabBrick.size(); i++)

@@ -14,7 +14,7 @@ class Ball
 		Ball();
 		~Ball();
 
-		inline sf::CircleShape GetShape() { return circle; }
+		inline sf::CircleShape& GetShape() { return circle; }
 		inline sf::Vector2f GetPos() { return circle.getPosition(); }
 		inline float GetVelocity() { return fVelocity;  }
 };

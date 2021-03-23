@@ -2,6 +2,9 @@
 
 #include "GameManager.h"
 
+float GameManager::fWidth = 1024;
+float GameManager::fHeight = 720;
+
 GameManager::GameManager()
 {
 }

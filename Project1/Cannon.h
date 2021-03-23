@@ -28,6 +28,6 @@ class Cannon
 
 
 	public:
-		sf::Vector2f BallMove(Ball& ball, sf::Vector2f mousePos);
+		sf::Vector2f BallDir(Ball& ball, sf::Vector2f mousePos);
 };
 
