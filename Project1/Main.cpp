@@ -61,7 +61,8 @@ int main()
         //Draw Bricks from Level
         for (int i=0; i < level.TabBrick.size(); i++)
         {
-            window.draw(*level.TabBrick[i]->Shape);
+            //window.draw(*level.TabBrick[i]->Shape); //old ( rectangle )
+            window.draw(*level.TabBrick[i]->Sprite); //new ( sprite )
             //std::cout << i << std::endl; // debug
         }
         
