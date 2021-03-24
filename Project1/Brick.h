@@ -21,10 +21,9 @@ public:
 
 	// définit un rectangle
 	sf::RectangleShape *Shape;
-
 	sf::Color color = sf::Color::Red;
 	
-
+	// use sprite
 	sf::Texture* texture;
 	sf::Sprite* Sprite;
 

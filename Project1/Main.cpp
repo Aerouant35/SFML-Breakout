@@ -51,8 +51,11 @@ int main()
             }
         }
         
-        ball->GetShape().move(ballDir * ball->GetVelocity() * fDeltaTime);
+        //ball->GetShape().move(ballDir * ball->GetVelocity() * fDeltaTime);    //old ( use circle )
         
+        ball->Sprite->move(ballDir * ball->GetVelocity() * fDeltaTime);//new ( use Sprite )    
+
+
         // Clear screen
         window.clear();
         
@@ -68,7 +71,8 @@ int main()
         window.draw(*level.Background);
 
         //draw ball
-        window.draw(ball->GetShape());
+        //window.draw(ball->GetShape()); //old ( circle )
+        window.draw(*ball->Sprite);//new ( sprite )
 
         //Draw Bricks from Level
         for (int i=0; i < level.TabBrick.size(); i++)
