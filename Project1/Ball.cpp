@@ -29,15 +29,9 @@ Ball::Ball()
 	Sprite->setTexture(*texture);
 	Sprite->scale(0.05, 0.05);
 
-	Sprite->setPosition(GameManager::fWidth / 2, GameManager::fHeight /2);
+	//Sprite->setPosition(GameManager::fWidth / 2, GameManager::fHeight /2);
 
-	
-
-
-
-
-
-
+	GameManager::SetPosition(0.5f, 0.5f, 0.5f, 0.9f, *Sprite);
 }
 
 Ball::~Ball()

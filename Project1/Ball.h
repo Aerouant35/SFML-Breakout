@@ -13,7 +13,7 @@ class Ball
 		sf::CircleShape circle;
 
 		float fRadius = 10;
-		float fVelocity = 300;
+		float fVelocity = 500;
 
 	public:
 

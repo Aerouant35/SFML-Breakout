@@ -53,10 +53,11 @@ int main()
             //Mouse left button
             if (event.type == sf::Event::MouseButtonPressed) 
             {
-                if (event.mouseButton.button == sf::Mouse::Left)
+                if (event.mouseButton.button == sf::Mouse::Left && gameManager.GetIsMoving() != true)
                 {
                     // Normalize function for move the ball 
                     ballDir = cannon.BallDir(*ball, (sf::Vector2f)sf::Mouse::getPosition(window));
+                    gameManager.SetIsMoving(true);
                 }
             }
         }
@@ -79,8 +80,16 @@ int main()
         {
             ballDir.x *= -1.f;
         }
-        else if (fBallTopBound <= 0.f || fBallBotBound >= GameManager::fHeight)
+        else if (fBallTopBound <= 0.f)
             ballDir.y *= -1.f;
+        //reset ball when falling bottom wall
+        else if (fBallTopBound > GameManager::fHeight)
+        {
+            ballDir.x = 0;
+            ballDir.y = 0;
+            GameManager::SetPosition(0.5f, 0.5f, 0.5f, 0.9f, *ball->Sprite);
+            gameManager.SetIsMoving(false);
+        }
 
         // Clear screen
         window.clear();
