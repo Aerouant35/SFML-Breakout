@@ -29,7 +29,7 @@ Ball::Ball()
 	Sprite->setTexture(*texture);
 	Sprite->scale(0.05, 0.05);
 
-	Sprite->setPosition(GameManager::fWidth / 2, GameManager::fHeight - 50);
+	Sprite->setPosition(GameManager::fWidth / 2, GameManager::fHeight /2);
 
 	
 

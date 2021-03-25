@@ -28,12 +28,20 @@ int main()
     sf::Vector2f ballDir;
     #pragma endregion CreateElement
 
+    sf::FloatRect ballBound = ball->Sprite->getGlobalBounds();
+
+    float fBallLeftBound = 0;
+    float fBallRightBound = 0;
+    float fBallTopBound = 0;
+    float fBallBotBound = 0;
 
     // Start the game loop
     while (window.isOpen())
     {
+        //Update timer
         float fDeltaTime = clock.getElapsedTime().asSeconds();
         clock.restart();
+
         // Process events
         sf::Event event;
         while (window.pollEvent(event))
@@ -42,10 +50,12 @@ int main()
             if (event.type == sf::Event::Closed)
                 window.close();
 
+            //Mouse left button
             if (event.type == sf::Event::MouseButtonPressed) 
             {
                 if (event.mouseButton.button == sf::Mouse::Left)
                 {
+                    // Normalize function for move the ball 
                     ballDir = cannon.BallDir(*ball, (sf::Vector2f)sf::Mouse::getPosition(window));
                 }
             }
@@ -53,8 +63,24 @@ int main()
         
         //ball->GetShape().move(ballDir * ball->GetVelocity() * fDeltaTime);    //old ( use circle )
         
+        //Move ball (ballDir is a vector -> 0 = no movement)
         ball->Sprite->move(ballDir * ball->GetVelocity() * fDeltaTime);//new ( use Sprite )    
+        
+        //Update ball bound
+        ballBound = ball->Sprite->getGlobalBounds();
 
+        fBallLeftBound = ballBound.left;
+        fBallRightBound = ballBound.left + ballBound.width;
+        fBallTopBound = ballBound.top;
+        fBallBotBound = ballBound.top + ballBound.height;
+
+        //wall collision
+        if (fBallLeftBound <= 0.f || fBallRightBound >= GameManager::fWidth)
+        {
+            ballDir.x *= -1.f;
+        }
+        else if (fBallTopBound <= 0.f || fBallBotBound >= GameManager::fHeight)
+            ballDir.y *= -1.f;
 
         // Clear screen
         window.clear();
