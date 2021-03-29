@@ -16,7 +16,7 @@ Ball::Ball()
     //new (use sprite)
 	//Sprite
 	texture = new sf::Texture;
-	Sprite = new sf::Sprite;
+	sprite = new sf::Sprite;
 
 	texture->setSmooth(true);
 	texture->setRepeated(true);
@@ -26,10 +26,10 @@ Ball::Ball()
 	{
 		// error...
 	}
-	Sprite->setTexture(*texture);
-	Sprite->scale(0.05, 0.05);
+	sprite->setTexture(*texture);
+	sprite->scale(0.05, 0.05);
 
-	Sprite->setPosition(GameManager::fWidth / 2, GameManager::fHeight - 50);
+	sprite->setPosition(GameManager::fWidth / 2, GameManager::fHeight - 50);
 
 	
 

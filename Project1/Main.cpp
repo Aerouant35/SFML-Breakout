@@ -1,11 +1,17 @@
+//SFML classes
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
-
+//Custom classes
 #include "GameManager.h"
 #include "Level.h"
 #include "Cannon.h"
+// for debugs
+#include <iostream> 
 
-#include <iostream>
+#pragma region Forward Declarations
+//class GameObject;
+#pragma endregion Forward Declarations
+
 
 int main()
 {
@@ -22,14 +28,20 @@ int main()
     sf::Clock clock;
     sf::Time time;
 
+    //create ball
     Ball *ball = new Ball();
+    level.TabBall.push_back(ball);
+    level.TabGameObject.push_back(ball);
+
+
+    //Canon
     Cannon cannon;
 
     sf::Vector2f ballDir;
     #pragma endregion CreateElement
 
 
-    // Start the game loop
+    // Start the game loop (Update)
     while (window.isOpen())
     {
         float fDeltaTime = clock.getElapsedTime().asSeconds();
@@ -51,39 +63,31 @@ int main()
             }
         }
         
-        //ball->GetShape().move(ballDir * ball->GetVelocity() * fDeltaTime);    //old ( use circle )
-        
-        ball->Sprite->move(ballDir * ball->GetVelocity() * fDeltaTime);//new ( use Sprite )    
+
+        //Update All Gameobjects
+        level.Update();
+
+        //Update Ball Movement
+        ball->sprite->move(ballDir * ball->GetVelocity() * fDeltaTime);//new ( use Sprite )    
 
 
         // Clear screen
         window.clear();
         
         #pragma region DisplayElement 
-        /*
-            // Draw the sprite
-            window.draw(sprite);
-            // Draw the string
-            window.draw(text);
-        */
 
         //draw background
         window.draw(*level.Background);
 
         //draw ball
-        //window.draw(ball->GetShape()); //old ( circle )
-        window.draw(*ball->Sprite);//new ( sprite )
+        //window.draw(*ball->sprite);//new ( sprite )
 
-        //Draw Bricks from Level
-        for (int i=0; i < level.TabBrick.size(); i++)
+        //Draw all GameObject from Level
+        for (int i = 0; i < level.TabGameObject.size(); i++)
         {
-            //window.draw(*level.TabBrick[i]->Shape); //old ( rectangle )
-            window.draw(*level.TabBrick[i]->Sprite); //new ( sprite )
-            //std::cout << i << std::endl; // debug
+            window.draw(*level.TabGameObject[i]->sprite);
         }
-        
-        //Brick TestBrick;
-        //window.draw(*TestBrick.Shape);
+
 
         #pragma endregion DisplayElement
 

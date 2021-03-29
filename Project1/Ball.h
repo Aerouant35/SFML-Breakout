@@ -2,8 +2,9 @@
 #include <SFML/Graphics.hpp>
 
 #include "GameManager.h"
+#include "GameObject.h"
 
-class Ball
+class Ball : public GameObject
 {
 	public : 
 		Ball();
@@ -23,8 +24,8 @@ class Ball
 
 
 		// use sprite
-		sf::Texture* texture;
-		sf::Sprite* Sprite;
-		inline sf::Vector2f GetPos() { return Sprite->getPosition(); }
+		//sf::Texture* texture;
+		//sf::Sprite* Sprite;
+		inline sf::Vector2f GetPos() { return sprite->getPosition(); }
 };
 

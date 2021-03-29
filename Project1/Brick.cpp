@@ -1,16 +1,17 @@
 #include "Brick.h"
 
-Brick::Brick()
+Brick::Brick() : GameObject()
 {
+
 	//old
 	//Shape = new sf::RectangleShape(sf::Vector2f(fWidth, fHeight));
 	//Shape->setFillColor(color);
 
 
 	//Sprite
+	
 	texture = new sf::Texture;
-	Sprite = new sf::Sprite;
-
+	sprite = new sf::Sprite;
 
 	texture->setSmooth(true);
 	texture->setRepeated(true);
@@ -20,9 +21,10 @@ Brick::Brick()
 	{
 		// error...
 	}
-	Sprite->setTexture(*texture);
-	Sprite->scale(1, 1);
+	sprite->setTexture(*texture);
+	sprite->scale(1, 1);
 }
+
 
 Brick::~Brick()
 {

@@ -1,6 +1,10 @@
 #pragma once
-#include "Brick.h"
+
 #include <vector>
+
+#include "Ball.h"
+#include "Brick.h"
+#include "GameObject.h"
 
 
 class Level
@@ -19,10 +23,17 @@ class Level
 
 		int nbRaw = 3;
 		int nbCol = 8;
-
+		
+		std::vector<Ball*> TabBall;
 		std::vector<Brick*> TabBrick;
+		std::vector<GameObject*> TabGameObject;
 
 		sf::Texture* texture;
 		sf::Sprite* Background;
+
+		#pragma region Functions
+		void Update();
+		#pragma endregion Functions
+
 };
 
