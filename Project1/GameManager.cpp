@@ -13,9 +13,9 @@ GameManager::~GameManager()
 {
 }
 
-void GameManager::SetPosition(float fAnchorX, float fAnchorY, float fRatioX, float fRatioY, sf::Shape& oShape)
+void GameManager::SetPosition(float fAnchorX, float fAnchorY, float fRatioX, float fRatioY, sf::Sprite& oSprite)
 {
-    sf::FloatRect oRect = oShape.getLocalBounds();
+    sf::FloatRect oRect = oSprite.getLocalBounds();
 
     float fOriginX = fAnchorX * oRect.width;
     float fOriginY = fAnchorY * oRect.height;
@@ -23,8 +23,8 @@ void GameManager::SetPosition(float fAnchorX, float fAnchorY, float fRatioX, flo
     float fPosX = fRatioX * fWidth;
     float fPosY = fRatioY * fHeight;
 
-    oShape.setOrigin(fOriginX, fOriginY);
-    oShape.setPosition(fPosX, fPosY);
+    oSprite.setOrigin(fOriginX, fOriginY);
+    oSprite.setPosition(fPosX, fPosY);
 }
 
 sf::Vector2f GameManager::Normalize(const sf::Vector2f& vectorBase)

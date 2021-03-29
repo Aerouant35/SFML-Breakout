@@ -31,13 +31,7 @@ Ball::Ball()
 
 	sprite->setPosition(GameManager::fWidth / 2, GameManager::fHeight - 50);
 
-	
-
-
-
-
-
-
+	GameManager::SetPosition(0.5f, 0.5f, 0.5f, 0.9f, *sprite);
 }
 
 Ball::~Ball()
