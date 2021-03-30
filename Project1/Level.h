@@ -24,15 +24,15 @@ class Level
 		int nbRaw = 3;
 		int nbCol = 8;
 		
-		std::vector<Ball*> TabBall;
-		std::vector<Brick*> TabBrick;
-		std::vector<GameObject*> TabGameObject;
+		vector<Ball*> TabBall;
+		vector<Brick*> TabBrick;
+		vector<GameObject*> TabGameObject;
 
-		sf::Texture* texture;
-		sf::Sprite* Background;
+		Texture* texture;
+		Sprite* Background;
 
 		#pragma region Functions
-		void Update();
+		void Update(float deltaTime);
 		#pragma endregion Functions
 
 };

@@ -52,7 +52,7 @@ Level::~Level()
 {
 }
 
-void Level::Update()
+void Level::Update(float deltaTime)
 {
 	//Update All Gameobjects
 	for (int i = 0; i < TabGameObject.size(); i++)
@@ -78,6 +78,8 @@ void Level::Update()
 			{
 				if (TabGameObject[i] != TabBall[u]) // do not check collision with himself
 				{
+					TabBall[u]->CheckWallCollision();
+					TabBall[u]->Move(deltaTime);
 					TabGameObject[i]->CheckCollision(*TabBall[u]);
 				}
 			}

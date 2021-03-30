@@ -6,6 +6,7 @@
 //Debug
 #include <iostream>
 using namespace std;
+using namespace sf;
 
 class GameObject
 {
@@ -14,6 +15,9 @@ class GameObject
 		~GameObject();
 
 	protected :
+		#pragma region variables
+			float fVelocity;
+		#pragma endregion variables
 
 	public :
 		#pragma region Enum
@@ -29,8 +33,8 @@ class GameObject
 
 		#pragma region varialbes
 			// use sprite
-			sf::Texture* texture;
-			sf::Sprite* sprite;
+			Texture* texture;
+			Sprite* sprite;
 			EnumCollision enumCollision;
 		#pragma endregion varialbes
 
@@ -40,6 +44,11 @@ class GameObject
 
 			bool CheckCollision(GameObject other);
 			void OnTriggerEnter(GameObject other);
+
+			inline const float& GetVelocity() { return fVelocity; }
+
+		/*	virtual void SetVelocityX(float velocityX) = 0;
+			virtual void SetVelocityY(float velocityY) = 0;*/
 		#pragma endregion Functions
 };
 
