@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "GameObject.h"
-
+#include "Ball.h"
 
 
 class Brick : public GameObject
@@ -31,6 +31,8 @@ public:
 	#pragma endregion varialbes
 
 	#pragma region Functions
+	bool BrickCollision(Ball* ball);
+
 	#pragma endregion Functions
 };
 

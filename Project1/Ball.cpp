@@ -99,10 +99,8 @@ void Ball::CheckWallCollision()
 void Ball::Update(float* DeltaTime)
 {
     //update position
-    for (int u = 0; u < level->TabBall.size(); u++) //for each balls
-    {
-        level->TabBall[u]->Move(DeltaTime);
-    }
+    //Spicyyyyyy :    
+    Move(DeltaTime);
 
     CheckWallCollision();
 }

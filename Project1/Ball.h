@@ -28,7 +28,7 @@ class Ball : public GameObject
 			void CheckWallCollision();
 			void Move(float* deltaTime);
 
-
+			inline Vector2f GetDirection() { return vfDirection; };
 			inline void const SetDirection(const Vector2f direction) { vfDirection = direction; };
 
 			inline sf::Vector2f GetPos() { return sprite->getPosition(); }

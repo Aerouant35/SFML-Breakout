@@ -39,15 +39,6 @@ int main()
         //level.TabGameObject.push_back(ball);
     #pragma endregion CreateElements
 
-    sf::Vector2f ballDir;
-    //sf::FloatRect ballBound = ball->sprite->getGlobalBounds();
-    sf::FloatRect ballBound = sf::Rect<float>{ 486.399994,622.400024, 51.1999817, 51.1999817 };
-
-    float fBallLeftBound = 0;
-    float fBallRightBound = 0;
-    float fBallTopBound = 0;
-    float fBallBotBound = 0;
-
     // Start the game loop (Update)
     while (window.isOpen())
     {
@@ -76,7 +67,6 @@ int main()
                         level.TabBall[0]->SetDirection(GameManager::Normalize(vectorDiff));
                         //GameManager::SetIsMoving(true);
                     }
-
                 }
             }
         }
@@ -105,9 +95,7 @@ int main()
                 //throw Error
                 cout << "No sprite assign to : " + level.TabGameObject[i]->strName << endl;
             }
-
         }
-
 
         #pragma endregion DisplayElement
 

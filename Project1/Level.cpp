@@ -80,7 +80,15 @@ void Level::Update(float *deltaTime)
 				{
 					if (TabGameObject[i] != TabBall[u]) // do not check collision with himself
 					{
-						TabGameObject[i]->CheckCollision(*TabBall[u]);
+						if (TabGameObject[i]->CheckCollision(*TabBall[u]))
+						{
+							if (TabBrick[i]->BrickCollision(TabBall[u]))
+							{
+								delete TabBrick[i];
+								TabGameObject.erase(TabGameObject.begin() + i);
+								TabBrick.erase(TabBrick.begin() + i);
+							}
+						}
 					}
 				}
 			}
