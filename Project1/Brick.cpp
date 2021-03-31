@@ -2,6 +2,8 @@
 
 Brick::Brick() : GameObject()
 {
+	//init var
+	strName = "Brick";
 
 	//old
 	//Shape = new sf::RectangleShape(sf::Vector2f(fWidth, fHeight));

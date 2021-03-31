@@ -74,11 +74,14 @@ void Level::Update()
 	{
 		for (int i = 0; i < TabGameObject.size(); i++) //check each gameobject
 		{
-			for (int u = 0; u < TabBall.size(); u++) //with each balls
+			if (TabGameObject[i]->bIgnoreCollision == false) //only if we dont ignore collisions
 			{
-				if (TabGameObject[i] != TabBall[u]) // do not check collision with himself
+				for (int u = 0; u < TabBall.size(); u++) //with each balls
 				{
-					TabGameObject[i]->CheckCollision(*TabBall[u]);
+					if (TabGameObject[i] != TabBall[u]) // do not check collision with himself
+					{
+						TabGameObject[i]->CheckCollision(*TabBall[u]);
+					}
 				}
 			}
 		}

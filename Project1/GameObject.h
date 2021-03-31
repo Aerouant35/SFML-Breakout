@@ -28,18 +28,22 @@ class GameObject
 		#pragma endregion Enum
 
 		#pragma region varialbes
-			// use sprite
+			string strName = "GameObject";
+			string strTag = "none";
+
 			sf::Texture* texture;
 			sf::Sprite* sprite;
+
 			EnumCollision enumCollision;
+			bool bIgnoreCollision = false;
 		#pragma endregion varialbes
 
 		#pragma region Functions
-			void Start();
-			void Update();
+			virtual void Start();
+			virtual void Update();
 
-			bool CheckCollision(GameObject other);
-			void OnTriggerEnter(GameObject other);
+			virtual bool CheckCollision(GameObject other);
+			virtual void OnTriggerEnter(GameObject other);
 		#pragma endregion Functions
 };
 

@@ -55,5 +55,6 @@ bool GameObject::CheckCollision(GameObject other)
 
 void GameObject::OnTriggerEnter(GameObject other)
 {
-	std::cout << "Collision" << std::endl;
+	//Debug
+	//std::cout << this->strName << " Collision with " << other.strName  << std::endl;
 }

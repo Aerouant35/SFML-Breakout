@@ -2,6 +2,8 @@
 
 Ball::Ball()
 {
+	//init var
+	strName = "Ball";
 
     //old (use circle)
 	/*
