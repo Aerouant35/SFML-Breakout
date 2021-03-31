@@ -4,6 +4,8 @@
 #include "GameManager.h"
 #include "GameObject.h"
 
+
+
 class Ball : public GameObject
 {
 	public : 
@@ -11,21 +13,32 @@ class Ball : public GameObject
 		~Ball();
 
 	private : 
-		sf::CircleShape circle;
-
-		float fRadius = 10;
-		float fVelocity = 500;
+		float fRadius;
+		Vector2f vfDirection;
 
 	public:
-
-		inline sf::CircleShape& GetShape() { return circle; }
 		//inline sf::Vector2f GetPos() { return circle.getPosition(); }
-		inline float GetVelocity() { return fVelocity;  }
+
+		/*void SetVelocityX(float velocityX) override { fVelocity.x *= velocityX; };
+		void SetVelocityY(float velocityY) override { fVelocity.y *= velocityY; };*/
+
+		#pragma region PublicFunction
+			void Update(float * DeltaTime) override;
+
+			void CheckWallCollision();
+			void Move(float* deltaTime);
 
 
-		// use sprite
-		//sf::Texture* texture;
-		//sf::Sprite* Sprite;
-		inline sf::Vector2f GetPos() { return sprite->getPosition(); }
+			inline void const SetDirection(const Vector2f direction) { vfDirection = direction; };
+
+			inline sf::Vector2f GetPos() { return sprite->getPosition(); }
+
+			inline float GetLeftBound() { return sprite->getGlobalBounds().left; };
+			inline float GetRightBound() { return sprite->getGlobalBounds().left + sprite->getGlobalBounds().width; };
+			inline float GetTopBound() { return sprite->getGlobalBounds().top; };
+			inline float GetBotBound() { return sprite->getGlobalBounds().top + sprite->getGlobalBounds().height; };
+		#pragma endregion PublicFunction
+
+
 };
 

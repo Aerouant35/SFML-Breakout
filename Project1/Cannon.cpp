@@ -1,5 +1,8 @@
 #include "Cannon.h"
 
+#include "Ball.h"
+#include "level.h";
+
 Cannon::Cannon()
 {
 
@@ -56,7 +59,7 @@ void Cannon::Start()
 {
 }
 
-void Cannon::Update()
+void Cannon::Update(float* deltaTime)
 {
 	//cout << "Update Canon" << endl;
 	Rotate();
@@ -93,6 +96,8 @@ void Cannon::Fire(Level* level)
 {
 	//instanciate ball
 	Ball* ball = new Ball();
+	ball->setLevel(level);
+
 	level->TabBall.push_back(ball);
 	level->TabGameObject.push_back(ball);
 

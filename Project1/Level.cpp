@@ -18,13 +18,13 @@ Level::Level()
 	Background->scale(1, 1);
 	Background->setPosition(0, 0);
 
-
 	//Create Bricks on the Map
 	for (int u = 0; u < nbRaw; u++)
 	{
 		for (int i = 0; i < nbCol; i++)
 		{
 			Brick* CurrentBrick = new Brick;
+			CurrentBrick->setLevel(this);
 
 			//set pos
 
@@ -52,12 +52,12 @@ Level::~Level()
 {
 }
 
-void Level::Update()
+void Level::Update(float *deltaTime)
 {
 	//Update All Gameobjects
 	for (int i = 0; i < TabGameObject.size(); i++)
 	{
-		TabGameObject[i]->Update();
+		TabGameObject[i]->Update(deltaTime);
 	}
 
 	//Check ALL Collisions ( not rly optimise tho )

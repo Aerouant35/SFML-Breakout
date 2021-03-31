@@ -1,11 +1,14 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-//#include "Level.h"
+#pragma region Forward Declarations
+	class Level;
+#pragma endregion Forward Declarations
 
 //Debug
 #include <iostream>
 using namespace std;
+using namespace sf;
 
 class GameObject
 {
@@ -14,6 +17,10 @@ class GameObject
 		~GameObject();
 
 	protected :
+		#pragma region ProtectedVariables
+			float fVelocity;
+			Level* level;
+		#pragma endregion ProtectedVariables
 
 	public :
 		#pragma region Enum
@@ -27,23 +34,32 @@ class GameObject
 			};
 		#pragma endregion Enum
 
-		#pragma region varialbes
+		#pragma region PublicVarialbes
 			string strName = "GameObject";
 			string strTag = "none";
 
-			sf::Texture* texture;
-			sf::Sprite* sprite;
+			Texture* texture;
+			Sprite* sprite;
 
 			EnumCollision enumCollision;
 			bool bIgnoreCollision = false;
-		#pragma endregion varialbes
+		#pragma endregion PublicVarialbes
 
 		#pragma region Functions
 			virtual void Start();
-			virtual void Update();
+			virtual void Update(float* deltaTime);
 
 			virtual bool CheckCollision(GameObject other);
 			virtual void OnTriggerEnter(GameObject other);
+
+			//Getter / Setter
+			inline const float& GetVelocity() { return fVelocity; }
+			
+			inline Level* getLevel() { return level; }
+			inline void setLevel(Level* _level) { level = _level; }
 		#pragma endregion Functions
+
+
+
 };
 

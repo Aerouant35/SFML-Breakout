@@ -2,8 +2,11 @@
 #include <SFML/Graphics.hpp>
 
 #include "GameObject.h"
-#include "Ball.h"
-#include "level.h";
+
+#pragma region Forward Declarations
+	class Ball;
+	class level;
+#pragma endregion Forward Declarations
 
 class Cannon : public GameObject
 {
@@ -30,7 +33,7 @@ class Cannon : public GameObject
 
 		#pragma region Functions
 			virtual void Start();
-			virtual void Update();
+			virtual void Update(float* deltaTime);
 
 			sf::Vector2f BallDir(Ball& ball, sf::Vector2f mousePos);
 			sf::RenderWindow* renderWindow;
