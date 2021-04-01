@@ -67,8 +67,6 @@ void Cannon::Update(float* deltaTime)
 
 void Cannon::Rotate()
 {
-	//cout << "Rotate Canon" << endl;
-
 	//angle in degrees of rotation for sprite
 	float mouseAngle = -atan2(	sf::Mouse::getPosition(*renderWindow).x - sprite->getPosition().x,
 								sf::Mouse::getPosition(*renderWindow).y - sprite->getPosition().y) * 180 / 3.14159 + 180; 
@@ -80,8 +78,6 @@ void Cannon::Rotate()
 
 void Cannon::ChangeTexture()
 {
-	//cout << "Change Canon sprite" << endl;
-
 	if (bIsLoaded)
 	{
 		sprite->setTexture(*textureLoaded);
@@ -100,11 +96,6 @@ void Cannon::Fire(Level* level)
 
 	level->TabBall.push_back(ball);
 	level->TabGameObject.push_back(ball);
-
-	//set position
-
-	//set direction
-	//ballDir = BallDir(*ball, (sf::Vector2f)sf::Mouse::getPosition(*renderWindow));
 
 	//update sprite texture
 	bIsLoaded = false;

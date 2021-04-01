@@ -60,12 +60,10 @@ int main()
                         // Normalize function for move the ball 
                         Vector2f vectorDiff = (sf::Vector2f)sf::Mouse::getPosition(window) - level.TabBall[0]->GetPos(); // modify ball to cannon
                         level.TabBall[0]->SetDirection(GameManager::Normalize(vectorDiff));
-                        //GameManager::SetIsMoving(true);
                     }
                 }
             }
         }
-        
 
         //Update All Gameobjects
         level.Update(&fDeltaTime);
@@ -91,7 +89,6 @@ int main()
                 cout << "No sprite assign to : " + level.TabGameObject[i]->strName << endl;
             }
         }
-
         #pragma endregion DisplayElement
 
         // Update the window

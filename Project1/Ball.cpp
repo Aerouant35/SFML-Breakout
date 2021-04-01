@@ -87,18 +87,18 @@ void Ball::CheckBrickCollision()
             {
                 if (level->TabGameObject[i]->CheckCollision(*this) && !bIsCollide) //if we detect a collision
                 {
-                    if (level->TabBrick[i]->BrickCollision(this)) //do the collision function 
-                    {
-                        bIsCollide = true;
+                    bIsCollide = true; //Set true to collide one brick
 
-                        //if the brick shall be destroyed
-                        level->TabGoToDelete.push_back(level->TabBrick[i]);
-                    }
+                    //Set new ball direction when it hit a brick
+                    SetDirection(level->TabBrick[i]->BrickCollision(this));  
+
+                    //if the brick shall be destroyed
+                    level->TabGoToDelete.push_back(level->TabBrick[i]);
                 }
             }
                     
         }
-        bIsCollide = false;
+        bIsCollide = false; //reset to false
 }
 
 void Ball::Update(float* DeltaTime)

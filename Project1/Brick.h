@@ -23,7 +23,7 @@ public:
 	#pragma endregion varialbes
 
 	#pragma region Functions
-	bool BrickCollision(Ball* ball);
+	Vector2f BrickCollision(Ball* ball);
 
 	#pragma endregion Functions
 };
