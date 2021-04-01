@@ -37,12 +37,21 @@ Cannon::Cannon(sf::RenderWindow* CurrentWindow)
 
 	ChangeTexture();
 
-	//sprite->scale(0.05, 0.05); //old
 	sprite->scale(0.1, 0.1);
 
 	sprite->setPosition(GameManager::fWidth / 2, GameManager::fHeight - 50);
 
 	GameManager::SetPosition(0.5f, 0.5f, 0.5f, 0.9f, *sprite);
+
+	//Sound
+	soundBuffer = new SoundBuffer;
+	sound = new Sound;
+
+	if (!soundBuffer->loadFromFile("../Ressources/Sounds/Laser.wav"))
+	{
+		// error...
+	}
+	sound->setBuffer(*soundBuffer);
 }
 
 Cannon::~Cannon()
@@ -102,6 +111,9 @@ void Cannon::Fire(Level* level)
 	//update sprite texture
 	bIsLoaded = false;
 	ChangeTexture();
+
+	//Sound
+	sound->play();
 }
 
 void Cannon::Load()

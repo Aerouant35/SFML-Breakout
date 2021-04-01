@@ -1,7 +1,9 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 #include "GameObject.h"
+
 
 #pragma region Forward Declarations
 	class Ball;
@@ -27,16 +29,19 @@ class Cannon : public GameObject
 			float fHeight = 100;
 
 			bool bIsLoaded = true;
-			sf::Texture* textureLoaded;
-			sf::Texture* textureUnloaded;
+			Texture* textureLoaded;
+			Texture* textureUnloaded;
+
+			SoundBuffer* soundBuffer;
+			Sound* sound;
 		#pragma region Variables
 
 		#pragma region Functions
 			virtual void Start();
 			virtual void Update(float* deltaTime);
 
-			sf::Vector2f BallDir(Ball& ball, sf::Vector2f mousePos);
-			sf::RenderWindow* renderWindow;
+			Vector2f BallDir(Ball& ball, sf::Vector2f mousePos);
+			RenderWindow* renderWindow;
 
 			void Rotate();
 			void ChangeTexture();

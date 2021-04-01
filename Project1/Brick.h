@@ -1,5 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+
 #include "GameObject.h"
 #include "Ball.h"
 
@@ -25,6 +27,9 @@ public:
 	sf::Texture* texture1;
 	sf::Texture* texture2;
 	sf::Texture* texture3;
+
+	SoundBuffer* soundBuffer;
+	Sound* sound;
 	#pragma endregion varialbes
 
 	#pragma region Functions

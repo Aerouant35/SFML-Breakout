@@ -43,6 +43,17 @@ Brick::Brick() : GameObject()
 
 	sprite->setTexture(*texture);
 	sprite->scale(1, 1);
+
+	//Sound
+	soundBuffer = new SoundBuffer;
+	sound = new Sound;
+
+	if (!soundBuffer->loadFromFile("../Ressources/Sounds/Pop.wav"))
+	{
+		// error...
+	}
+	sound->setVolume(40);
+	sound->setBuffer(*soundBuffer);
 }
 
 

@@ -1,9 +1,10 @@
 #pragma once
 
 #include <vector>
+#include <SFML/Audio.hpp>
+
 
 #include "GameObject.h"
-
 
 #include "Ball.h"
 #include "Brick.h"
@@ -39,6 +40,8 @@ class Level
 
 			Texture* texture;
 			Sprite* Background;
+
+			Music* music;
 		#pragma endregion Variables
 
 		#pragma region Functions

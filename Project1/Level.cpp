@@ -12,11 +12,25 @@ Level::Level()
 
 	if (!texture->loadFromFile("../Ressources/Textures/BackGround.png"))
 	{
-		// error...
+
 	}
 	Background->setTexture(*texture);
 	Background->scale(1, 1);
 	Background->setPosition(0, 0);
+
+	//Sound
+	music = new Music;
+	if (music->openFromFile("../Ressources/Sounds/Music/5- Dark Fantasy Studio - Demolition race.wav"))
+	{
+		// error...
+	}
+
+	music->setLoop(true);
+	music->setVolume(10);
+	music->play();
+
+
+
 
 
 	//Map Creation :

@@ -1,5 +1,5 @@
 #include "Ball.h"
-
+#include <SFML/Audio.hpp>
 
 #include "Level.h"
 
@@ -21,7 +21,6 @@ Ball::Ball()
     vfDirection = Vector2f(0.f, 0.f);
     bIsCollide = false;
 
-	//if(!texture->loadFromFile("Test.png"))
 	if (!texture->loadFromFile("../Ressources/Textures/Ball.png"))
 	{
 		// error...
@@ -104,6 +103,9 @@ void Ball::CheckBrickCollision()
                     {
                         level->TabGoToDelete.push_back(level->TabBrick[i]);
                     }
+
+                    //Play sound
+                    level->TabBrick[i]->sound->play();
                 }
             }
                     
