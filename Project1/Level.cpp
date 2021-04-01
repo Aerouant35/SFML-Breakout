@@ -71,29 +71,29 @@ void Level::Update(float *deltaTime)
 	}
 
 	//for each GO to delete
-	for (int i = TabGoToDelete.size(); i > 0 ; i--)
+	for (int i = TabGoToDelete.size() - 1; i >= 0 ; i--)
 	{
 
 		//remove go from tab go
-		for (int u = TabGameObject.size(); u > 0; u--)
+		for (int u = TabGameObject.size() - 1; u >= 0; u--)
 		{
-			if (TabGoToDelete[i-1] == TabGameObject[u-1])
+			if (TabGoToDelete[i] == TabGameObject[u])
 			{
-				TabGameObject.erase(TabGameObject.begin() + u-1);
+				TabGameObject.erase(TabGameObject.begin() + u);
 			}
 		}
 
 		//remove go from tab brick
-		for (int v = TabBrick.size(); v >0; v--)
+		for (int v = TabBrick.size() - 1; v >= 0; v--)
 		{
-			if (TabGoToDelete[i-1] == TabBrick[v-1])
+			if (TabGoToDelete[i] == TabBrick[v])
 			{
-				TabBrick.erase(TabBrick.begin() + v-1);
+				TabBrick.erase(TabBrick.begin() + v);
 			}
 		}
 
 		//Remove go from TabGoToDelete
-		delete TabGoToDelete[i-1];
-		TabGoToDelete.erase(TabGoToDelete.begin() + i - 1);
+		delete TabGoToDelete[i];
+		TabGoToDelete.erase(TabGoToDelete.begin() + i);
 	}
 }
