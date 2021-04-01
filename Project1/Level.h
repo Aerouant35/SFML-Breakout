@@ -25,7 +25,7 @@ class Level
 
 	public : 
 		#pragma region Variables
-			int nbRaw = 3;
+			int nbRaw = 4;
 			int nbCol = 8;
 			float deltaTime = 0;
 		

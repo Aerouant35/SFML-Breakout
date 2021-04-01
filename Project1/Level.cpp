@@ -29,9 +29,10 @@ Level::Level()
 
 	std::vector<std::vector<int>> matrixMap = 
 	{ 
-		{3,1,NULL,3,1,1,2,3},
-		{2,1,3,-1,1,1,NULL,-1},
-		{1,-1,2,1,NULL,1,1,3}
+		{3,2,1,1,1,1,2,3},
+		{2,1,2,NULL,NULL,2,1,2},
+		{3,NULL,1,3,3,1,NULL,3},
+		{-1,NULL,-1,-1,-1,-1,NULL,-1}
 	};
 
 	//Create Bricks on the Map

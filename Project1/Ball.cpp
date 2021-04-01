@@ -92,8 +92,18 @@ void Ball::CheckBrickCollision()
                     //Set new ball direction when it hit a brick
                     SetDirection(level->TabBrick[i]->BrickCollision(this));  
 
+                    //if the brick shall be damaged
+                    if (level->TabBrick[i]->nbLife > 0)
+                    {
+                        level->TabBrick[i]->nbLife -= 1;
+                        level->TabBrick[i]->UpdateTexture();
+
+                    }
                     //if the brick shall be destroyed
-                    level->TabGoToDelete.push_back(level->TabBrick[i]);
+                    if (level->TabBrick[i]->nbLife == 0)
+                    {
+                        level->TabGoToDelete.push_back(level->TabBrick[i]);
+                    }
                 }
             }
                     
