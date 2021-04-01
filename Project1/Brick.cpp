@@ -7,16 +7,16 @@ Brick::Brick() : GameObject()
 	//init var
 	strName = "Brick";
 
-	//old
-	//Shape = new sf::RectangleShape(sf::Vector2f(fWidth, fHeight));
-	//Shape->setFillColor(color);
-
-
-	//Sprite
-	
-	texture = new sf::Texture;
+	//Sprite	
 	sprite = new sf::Sprite;
 
+	//load textures
+	texture					= new sf::Texture;
+	textureUnbreakable		= new sf::Texture;
+	texture1				= new sf::Texture;
+	texture2				= new sf::Texture;
+	texture3				= new sf::Texture;
+	
 	texture->setSmooth(true);
 	texture->setRepeated(true);
 
@@ -25,6 +25,23 @@ Brick::Brick() : GameObject()
 	{
 		// error...
 	}
+	if (!textureUnbreakable->loadFromFile("../Ressources/Textures/Brick-Unbreakable.png"))
+	{
+		// error...
+	}
+	if (!texture1->loadFromFile("../Ressources/Textures/Brick-1.png"))
+	{
+		// error...
+	}
+	if (!texture2->loadFromFile("../Ressources/Textures/Brick-2.png"))
+	{
+		// error...
+	}
+	if (!texture3->loadFromFile("../Ressources/Textures/Brick-3.png"))
+	{
+		// error...
+	}
+
 	sprite->setTexture(*texture);
 	sprite->scale(1, 1);
 }
@@ -66,4 +83,28 @@ bool Brick::BrickCollision(Ball *ball)
 		return true;
 	}
 	return false;
+}
+
+void Brick::UpdateTexture()
+{
+	if (nbLife == -1)
+	{
+		sprite->setTexture(*textureUnbreakable);
+	}
+
+	if (nbLife == 1)
+	{
+		sprite->setTexture(*texture1);
+	}
+
+	if (nbLife == 2)
+	{
+		sprite->setTexture(*texture2);
+	}
+
+	if (nbLife == 3)
+	{
+		sprite->setTexture(*texture3);
+	}
+
 }

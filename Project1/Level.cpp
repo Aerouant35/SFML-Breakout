@@ -30,8 +30,8 @@ Level::Level()
 	std::vector<std::vector<int>> matrixMap = 
 	{ 
 		{3,1,NULL,3,1,1,2,3},
-		{2,1,3,1,1,1,NULL,1},
-		{1,1,2,1,NULL,1,1,3}
+		{2,1,3,-1,1,1,NULL,-1},
+		{1,-1,2,1,NULL,1,1,3}
 	};
 
 	//Create Bricks on the Map
@@ -45,6 +45,7 @@ Level::Level()
 				Brick* CurrentBrick = new Brick;
 				CurrentBrick->setLevel(this);
 				CurrentBrick->nbLife = matrixMap[u][i];
+				CurrentBrick->UpdateTexture();
 
 				//set pos
 				CurrentBrick->sprite->setPosition(CurrentBrick->fWidth * i + Span * (i + 1) + OffsetLeft,

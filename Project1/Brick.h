@@ -20,11 +20,16 @@ public:
 
 	float fWidth = 100;
 	float fHeight = 35;
+
+	sf::Texture* textureUnbreakable;
+	sf::Texture* texture1;
+	sf::Texture* texture2;
+	sf::Texture* texture3;
 	#pragma endregion varialbes
 
 	#pragma region Functions
 	bool BrickCollision(Ball* ball);
-
+	void UpdateTexture();
 	#pragma endregion Functions
 };
 
