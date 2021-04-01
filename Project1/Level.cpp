@@ -31,8 +31,9 @@ Level::Level()
 	{ 
 		{3,2,1,1,1,1,2,3},
 		{2,1,2,NULL,NULL,2,1,2},
-		{3,NULL,1,3,3,1,NULL,3},
-		{-1,NULL,-1,-1,-1,-1,NULL,-1}
+		{3,NULL,1,NULL,NULL,1,NULL,3},
+		{-1,NULL,-1,3,3,-1,NULL,-1},
+		{NULL,NULL,NULL,-1,-1,NULL,NULL,NULL}
 	};
 
 	//Create Bricks on the Map

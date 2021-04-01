@@ -30,8 +30,10 @@ Cannon::Cannon(sf::RenderWindow* CurrentWindow)
 	texture = new sf::Texture;
 	sprite = new sf::Sprite;
 
+	//smooth textures
 	texture->setSmooth(true);
-	texture->setRepeated(true);
+	textureLoaded->setSmooth(true);
+	textureUnloaded->setSmooth(true);
 
 	ChangeTexture();
 
