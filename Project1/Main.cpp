@@ -32,11 +32,6 @@ int main()
         //Canon
         level.cannon = new Cannon(&window);
         level.TabGameObject.push_back(level.cannon);
-
-        //create ball
-        //Ball* ball = new Ball();
-        //level.TabBall.push_back(ball);
-        //level.TabGameObject.push_back(ball);
     #pragma endregion CreateElements
 
     // Start the game loop (Update)

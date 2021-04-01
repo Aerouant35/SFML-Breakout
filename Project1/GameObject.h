@@ -59,9 +59,12 @@ class GameObject
 			
 			inline Level* getLevel() { return level; }
 			inline void setLevel(Level* _level) { level = _level; }
+
+			//Get sprite collision
+			inline float GetLeftBound() { return sprite->getGlobalBounds().left; };
+			inline float GetRightBound() { return sprite->getGlobalBounds().left + sprite->getGlobalBounds().width; };
+			inline float GetTopBound() { return sprite->getGlobalBounds().top; };
+			inline float GetBotBound() { return sprite->getGlobalBounds().top + sprite->getGlobalBounds().height; };
 		#pragma endregion Functions
-
-
-
 };
 

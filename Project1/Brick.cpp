@@ -37,17 +37,11 @@ Brick::~Brick()
 bool Brick::BrickCollision(Ball *ball)
 {
 	Vector2f vfNewBallDir;
-	FloatRect frBound = sprite->getGlobalBounds();
 
-	float fLeftBound = frBound.left;
-	float fRightBound = frBound.left + frBound.width;
-	float fTopBound = frBound.top;
-	float fBotBound = frBound.top + frBound.height;
-
-	float fDistLeft = ball->GetRightBound() - fLeftBound;
-	float fDistRight = ball->GetLeftBound() - fRightBound;
-	float fDistTop = ball->GetBotBound() - fTopBound;
-	float fDistBot = ball->GetTopBound() - fBotBound;
+	float fDistLeft = ball->GetRightBound() - this->GetLeftBound();
+	float fDistRight = ball->GetLeftBound() - this->GetRightBound();
+	float fDistTop = ball->GetBotBound() - this->GetTopBound();
+	float fDistBot = ball->GetTopBound() - this->GetBotBound();
 
 	bool ballFromLeft(abs(fDistLeft) < abs(fDistRight));
 	bool ballFromTop(abs(fDistTop) < abs(fDistBot));

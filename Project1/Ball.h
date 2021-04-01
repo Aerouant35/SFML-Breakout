@@ -15,13 +15,9 @@ class Ball : public GameObject
 	private : 
 		float fRadius;
 		Vector2f vfDirection;
+		bool bIsCollide;
 
 	public:
-		//inline sf::Vector2f GetPos() { return circle.getPosition(); }
-
-		/*void SetVelocityX(float velocityX) override { fVelocity.x *= velocityX; };
-		void SetVelocityY(float velocityY) override { fVelocity.y *= velocityY; };*/
-
 		#pragma region PublicFunction
 			void Update(float * DeltaTime) override;
 
@@ -33,13 +29,6 @@ class Ball : public GameObject
 			inline void const SetDirection(const Vector2f direction) { vfDirection = direction; };
 
 			inline sf::Vector2f GetPos() { return sprite->getPosition(); }
-
-			inline float GetLeftBound() { return sprite->getGlobalBounds().left; };
-			inline float GetRightBound() { return sprite->getGlobalBounds().left + sprite->getGlobalBounds().width; };
-			inline float GetTopBound() { return sprite->getGlobalBounds().top; };
-			inline float GetBotBound() { return sprite->getGlobalBounds().top + sprite->getGlobalBounds().height; };
 		#pragma endregion PublicFunction
-
-
 };
 

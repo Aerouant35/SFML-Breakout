@@ -9,17 +9,6 @@ Ball::Ball()
 	//init var
 	strName = "Ball";
 
-    //old (use circle)
-	/*
-    //set circle radius
-    circle.setRadius(fRadius);
-    // change la couleur de la forme pour du vert
-    circle.setFillColor(sf::Color(100, 250, 50));
-    //set origin and position for circle
-    GameManager::SetPosition(0.5f, 1, 0.5f, 1, circle);
-	*/
-
-    //new (use sprite)
 	//Sprite
 	texture = new Texture;
 	sprite = new Sprite;
@@ -30,6 +19,7 @@ Ball::Ball()
 	fRadius = 90;
 	fVelocity = 50.f;
     vfDirection = Vector2f(0.f, 0.f);
+    bIsCollide = false;
 
 	//if(!texture->loadFromFile("Test.png"))
 	if (!texture->loadFromFile("../Ressources/Textures/Ball.png"))
@@ -67,29 +57,19 @@ void Ball::CheckWallCollision()
         //reset Canon
         level->cannon->Load();
 
-        //vfDirection.x = 0;
-        //vfDirection.y = 0;
-        //GameManager::SetPosition(0.5f, 0.5f, 0.5f, 0.9f, *sprite);
-        //gameManager.SetIsMoving(false);
-
-        //remoove refrences
-
         //get index element 
         int nbToDelete = 0;
         for (nbToDelete; nbToDelete < level->TabGameObject.size(); nbToDelete++)
         {
             if (this == level->TabGameObject[nbToDelete])
             {
-                //cout << "REAL - nbToDelete : " << nbToDelete << endl;
                 break;
             }
         }
-        //cout << "nbToDelete : " << nbToDelete << endl;
 
         //remoove from tab go*
-        //cout << level->TabGameObject.size() << endl;  //debug
         level->TabGameObject.erase(level->TabGameObject.begin() + nbToDelete);
-        //cout << level->TabGameObject.size() << endl <<endl; //debug
+
         //remoove from tab ball
         level->TabBall.clear();
 
@@ -105,24 +85,20 @@ void Ball::CheckBrickCollision()
         {
             if (level->TabGameObject[i]->strName == "Brick") //if the go is a brick
             {
-                if (level->TabGameObject[i]->CheckCollision(*this)) //if we detect a collision
+                if (level->TabGameObject[i]->CheckCollision(*this) && !bIsCollide) //if we detect a collision
                 {
                     if (level->TabBrick[i]->BrickCollision(this)) //do the collision function 
                     {
-                        //cout << "touch brick " << endl;
+                        bIsCollide = true;
+
                         //if the brick shall be destroyed
                         level->TabGoToDelete.push_back(level->TabBrick[i]);
-                        //cout << "TabGoToDelete.size : "<< level->TabGoToDelete.size() << endl;
-
-                        //old
-                        //delete level->TabBrick[i];
-                        //level->TabGameObject.erase(level->TabGameObject.begin() + i);
-                        //level->TabBrick.erase(level->TabBrick.begin() + i);
                     }
                 }
             }
                     
         }
+        bIsCollide = false;
 }
 
 void Ball::Update(float* DeltaTime)

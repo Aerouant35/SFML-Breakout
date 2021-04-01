@@ -55,8 +55,6 @@ Level::Level()
 			}
 		}
 	}
-
-
 }
 
 Level::~Level()
@@ -96,8 +94,5 @@ void Level::Update(float *deltaTime)
 		//Remove go from TabGoToDelete
 		delete TabGoToDelete[i-1];
 		TabGoToDelete.erase(TabGoToDelete.begin() + i - 1);
-
-		//cout << "brick removed "<< endl;
 	}
-
 }
