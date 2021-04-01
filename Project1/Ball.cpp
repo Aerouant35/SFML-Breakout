@@ -75,15 +75,17 @@ void Ball::CheckWallCollision()
         //remoove refrences
 
         //get index element 
-        int nbToDelete;
-        for (int i = 0; i < level->TabGameObject.size(); i++)
+        int nbToDelete = 0;
+        for (nbToDelete; nbToDelete < level->TabGameObject.size(); nbToDelete++)
         {
-            if (this == level->TabGameObject[i])
+            if (this == level->TabGameObject[nbToDelete])
             {
-                nbToDelete = i;
+                //cout << "REAL - nbToDelete : " << nbToDelete << endl;
                 break;
             }
         }
+        //cout << "nbToDelete : " << nbToDelete << endl;
+
         //remoove from tab go*
         //cout << level->TabGameObject.size() << endl;  //debug
         level->TabGameObject.erase(level->TabGameObject.begin() + nbToDelete);
@@ -92,17 +94,42 @@ void Ball::CheckWallCollision()
         level->TabBall.clear();
 
         //delete element
-        delete this;
+         delete this;
     }
+}
+
+void Ball::CheckBrickCollision()
+{
+
+        for (int i = 0; i < level->TabGameObject.size(); i++) //check each gameobject
+        {
+            if (level->TabGameObject[i]->strName == "Brick") //if the go is a brick
+            {
+                if (level->TabGameObject[i]->CheckCollision(*this)) //if we detect a collision
+                {
+                    if (level->TabBrick[i]->BrickCollision(this)) //do the collision function 
+                    {
+                        //cout << "touch brick " << endl;
+                        //if the brick shall be destroyed
+                        level->TabGoToDelete.push_back(level->TabBrick[i]);
+                        //cout << "TabGoToDelete.size : "<< level->TabGoToDelete.size() << endl;
+
+                        //old
+                        //delete level->TabBrick[i];
+                        //level->TabGameObject.erase(level->TabGameObject.begin() + i);
+                        //level->TabBrick.erase(level->TabBrick.begin() + i);
+                    }
+                }
+            }
+                    
+        }
 }
 
 void Ball::Update(float* DeltaTime)
 {
-    //update position
-    //Spicyyyyyy :    
     Move(DeltaTime);
-
-    CheckWallCollision();
+    CheckBrickCollision();
+    CheckWallCollision(); //might destroy imself, so last to call
 }
 
 void Ball::Move(float* deltaTime)

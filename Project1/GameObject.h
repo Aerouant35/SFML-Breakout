@@ -17,12 +17,14 @@ class GameObject
 		~GameObject();
 
 	protected :
+
 		#pragma region ProtectedVariables
 			float fVelocity;
 			Level* level;
 		#pragma endregion ProtectedVariables
 
 	public :
+
 		#pragma region Enum
 			enum EnumCollision
 			{

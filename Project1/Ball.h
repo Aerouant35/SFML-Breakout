@@ -26,6 +26,7 @@ class Ball : public GameObject
 			void Update(float * DeltaTime) override;
 
 			void CheckWallCollision();
+			void CheckBrickCollision();
 			void Move(float* deltaTime);
 
 			inline Vector2f GetDirection() { return vfDirection; };

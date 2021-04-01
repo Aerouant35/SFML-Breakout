@@ -29,9 +29,12 @@ class Level
 		float deltaTime = 0;
 		
 		Cannon* cannon;
+
 		vector<Ball*> TabBall;
 		vector<Brick*> TabBrick;
+
 		vector<GameObject*> TabGameObject;
+		vector<GameObject*> TabGoToDelete;
 
 		Texture* texture;
 		Sprite* Background;

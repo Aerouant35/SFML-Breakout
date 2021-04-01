@@ -1,5 +1,7 @@
 #include "Brick.h"
 
+#include "Level.h"
+
 Brick::Brick() : GameObject()
 {
 	//init var

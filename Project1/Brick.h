@@ -16,7 +16,7 @@ private:
 
 public:
 	#pragma region varialbes
-	int nbLife = 3;
+	int nbLife = NULL;
 
 	float fWidth = 100;
 	float fHeight = 35;
